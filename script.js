@@ -3,16 +3,18 @@ function convertToNumbers() {
   let outputText = '';
 
   for (let char of inputText) {
+    const codePoint = char.codePointAt(0);
+
     if (char === ' ') {
       outputText += ' ';
     } else if (char >= 'a' && char <= 'z') {
-      outputText += (char.charCodeAt(0) - 96) + ' ';
+      outputText += (codePoint - 96) + ' ';
     } else if (char >= 'A' && char <= 'Z') {
-      outputText += `A${char.charCodeAt(0) - 64} `;
+      outputText += `A${codePoint - 64} `;
     } else if (char >= '0' && char <= '9') {
       outputText += `N${char} `;
     } else {
-      outputText += `U+${char.codePointAt(0).toString(16).toUpperCase()} `;
+      outputText += `U+${codePoint.toString(16).toUpperCase()} `;
     }
   }
 
@@ -22,9 +24,9 @@ function convertToNumbers() {
 function convertToText() {
   const inputText = document.getElementById('inputText').value.trim();
   let outputText = '';
-  
-  // Memperbaiki regex agar bisa menangkap format Unicode yang lebih panjang
-  let matches = inputText.match(/A\d+|\d+|N\d+|U\+[0-9A-F]+| /g);
+
+  // Memperbaiki regex agar menangkap semua format Unicode yang mungkin
+  let matches = inputText.match(/A\d+|\d+|N\d+|U\+[0-9A-F]+| /g) || [];
 
   for (let match of matches) {
     if (match === ' ') {
