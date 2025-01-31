@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text to Number Converter</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Konversi Teks ke Angka</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Text to Number Converter</h1>
+    <h1>Konversi Teks ke Angka</h1>
     <textarea id="inputText" placeholder="Masukkan teks di sini..."></textarea>
-    <button onclick="convertText()">Convert</button>
-    <p id="output"></p>
+    <div class="buttons">
+      <button onclick="convertToNumbers()">Teks ke Angka</button>
+      <button onclick="convertToText()">Angka ke Teks</button>
+      <button onclick="copyResult()">Salin Hasil</button>
+    </div>
+    <textarea id="outputText" readonly placeholder="Hasil akan muncul di sini..."></textarea>
   </div>
   <script src="script.js"></script>
 </body>
