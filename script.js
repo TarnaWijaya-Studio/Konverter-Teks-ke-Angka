@@ -22,7 +22,9 @@ function convertToNumbers() {
 function convertToText() {
   const inputText = document.getElementById('inputText').value.trim();
   let outputText = '';
-  let matches = inputText.match(/A\d+|\d+|N\d|U\+\w+| /g);
+  
+  // Memperbaiki regex agar bisa menangkap format Unicode yang lebih panjang
+  let matches = inputText.match(/A\d+|\d+|N\d+|U\+[0-9A-F]+| /g);
 
   for (let match of matches) {
     if (match === ' ') {
@@ -31,9 +33,9 @@ function convertToText() {
       outputText += String.fromCharCode(parseInt(match) + 96);
     } else if (/^A\d+$/.test(match)) {
       outputText += String.fromCharCode(parseInt(match.substring(1)) + 64);
-    } else if (/^N\d$/.test(match)) {
+    } else if (/^N\d+$/.test(match)) {
       outputText += match.substring(1);
-    } else if (/^U\+\w+$/.test(match)) {
+    } else if (/^U\+[0-9A-F]+$/i.test(match)) {
       outputText += String.fromCodePoint(parseInt(match.substring(2), 16));
     }
   }
