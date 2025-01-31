@@ -1,12 +1,16 @@
 function convertToNumbers() {
-  const inputText = document.getElementById('inputText').value.toLowerCase();
+  const inputText = document.getElementById('inputText').value;
   let outputText = '';
 
   for (let char of inputText) {
     if (char === ' ') {
-      outputText += ' '; // Menjaga spasi
+      outputText += ' ';
     } else if (char >= 'a' && char <= 'z') {
-      outputText += (char.charCodeAt(0) - 96) + ' '; // Konversi huruf ke angka
+      outputText += (char.charCodeAt(0) - 96) + ' ';
+    } else if (char >= 'A' && char <= 'Z') {
+      outputText += (char.charCodeAt(0) - 64) + ' ';
+    } else {
+      outputText += `[${char.codePointAt(0)}]`;
     }
   }
 
@@ -15,14 +19,16 @@ function convertToNumbers() {
 
 function convertToText() {
   const inputText = document.getElementById('inputText').value.trim();
-  const numbers = inputText.split(' ');
   let outputText = '';
+  let matches = inputText.match(/\d+|.*?| /g);
 
-  for (let num of numbers) {
-    if (num === '') {
-      outputText += ' '; // Menjaga spasi
-    } else {
-      outputText += String.fromCharCode(parseInt(num) + 96); // Konversi angka ke huruf
+  for (let match of matches) {
+    if (match === ' ') {
+      outputText += ' ';
+    } else if (/^\d+$/.test(match)) {
+      outputText += String.fromCharCode(parseInt(match) + 96);
+    } else if (/^\d+$/.test(match)) {
+      outputText += String.fromCodePoint(parseInt(match.replace(/|/g, '')));
     }
   }
 
