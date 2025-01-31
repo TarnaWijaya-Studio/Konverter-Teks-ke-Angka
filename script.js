@@ -1,24 +1,37 @@
-function convertText() {
-  // Ambil teks dari input
-  const inputText = document.getElementById("inputText").value.toLowerCase();
-  let output = "";
+function convertToNumbers() {
+  const inputText = document.getElementById('inputText').value.toLowerCase();
+  let outputText = '';
 
-  // Loop melalui setiap karakter
-  for (let i = 0; i < inputText.length; i++) {
-    const char = inputText[i];
-    if (char >= "a" && char <= "z") {
-      // Konversi huruf ke angka (a=1, b=2, ..., z=26)
-      const number = char.charCodeAt(0) - 96;
-      output += number + " ";
-    } else if (char === " ") {
-      // Jika spasi, tambahkan spasi ke output
-      output += " ";
-    } else {
-      // Jika bukan huruf, abaikan
-      output += char;
+  for (let char of inputText) {
+    if (char === ' ') {
+      outputText += ' '; // Menjaga spasi
+    } else if (char >= 'a' && char <= 'z') {
+      outputText += (char.charCodeAt(0) - 96) + ' '; // Konversi huruf ke angka
     }
   }
 
-  // Tampilkan hasil
-  document.getElementById("output").textContent = output.trim();
+  document.getElementById('outputText').value = outputText.trim();
+}
+
+function convertToText() {
+  const inputText = document.getElementById('inputText').value.trim();
+  const numbers = inputText.split(' ');
+  let outputText = '';
+
+  for (let num of numbers) {
+    if (num === '') {
+      outputText += ' '; // Menjaga spasi
+    } else {
+      outputText += String.fromCharCode(parseInt(num) + 96); // Konversi angka ke huruf
+    }
+  }
+
+  document.getElementById('outputText').value = outputText;
+}
+
+function copyResult() {
+  const outputText = document.getElementById('outputText');
+  outputText.select();
+  document.execCommand('copy');
+  alert('Hasil berhasil disalin!');
 }
