@@ -1,8 +1,7 @@
 # Konverter-Teks-ke-Angka
 ## Tutorial
-<div align="center"
-![](./assets/tutorial.gif)
-
+<div align="center">
+  <img src="./assets/tutorial.gif" alt="tutorial" />
 </div>
 
 ## Penambahan fitur
