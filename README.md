@@ -1,6 +1,7 @@
 # Konverter-Teks-ke-Angka
 ## Tutorial
-![](assets/tutorial.gif)
+![](./assets/tutorial.gif)
+
 ## Penambahan fitur
 - [x] bisa emoji dan syebol 🗿👍 
 - [x] bisa teks panjang
