@@ -4,6 +4,7 @@
 ![](./assets/tutorial.gif)
 
 </div>
+
 ## Penambahan fitur
 - [x] bisa emoji dan syebol 🗿👍 
 - [x] bisa teks panjang
